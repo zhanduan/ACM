@@ -1,0 +1,25 @@
+#include <iostream>
+using namespace std;
+/* run this program using the console pauser or add your own getch, system("pause") or input loop */
+//算法训练 调和数列问题
+int main(int argc, char *argv[]) {
+	
+	while(1)
+	{
+	double num,sum=0.0;
+	double i=1;
+	cin>>num;
+	if (num==0.00)break;
+	else 
+	{
+		while(sum<num)
+		{
+			i+=1;
+			sum=sum+1.00/i;
+		}
+		cout<<int(i-1)<<" card(s)"<<endl;
+	}
+	}
+
+	return 0;
+}

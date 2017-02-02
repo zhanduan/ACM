@@ -1,0 +1,57 @@
+#include<iostream>
+#include<fstream>
+#include<string>
+#include<vector>
+using namespace std;
+//bool used[32769];
+vector<int>v1;
+//ÖÊÒòËØ2
+int main()
+{	
+	int num;
+	bool used[32769];
+	//memset(used,true,sizeof(used));
+	for(int i=0;i<=32768;i++)
+	{
+		used[i]=true;
+	}
+	used[0]=false;
+	used[1]=false;
+	for(int i=2;i<=32768;i++)
+	{
+		if(used[i])
+		{
+			for(int j=2*i;j<=32768;j+=i)
+				used[j]=false;
+		}
+	}
+	while(cin>>num)
+	{
+		if(num==1)
+		{
+			cout<<endl<<0<<endl;break;
+		}
+		else
+		{
+			v1.clear();
+			for(int i=2;i<=num;i++)
+			{
+			if(used[i])
+			{
+				while(num%i==0)
+				{
+					num=num/i;
+					v1.push_back(i);
+				}
+			}
+			}
+			for(int i=0;i<v1.size()-1;i++)
+				cout<<v1[i]<<" ";
+			//i=v1.size()-1;
+			cout<<v1[v1.size()-1]<<endl;
+			cout<<v1.size()<<endl;
+		}
+	}
+
+	return 0;
+}

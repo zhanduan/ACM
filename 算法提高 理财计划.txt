@@ -1,0 +1,27 @@
+#include<iostream>
+#include<fstream>
+#include<string>
+#include<vector>
+#include<iomanip>
+using namespace std;
+//蓝桥杯算法提高 理财计划
+int main()
+{	
+	int time;
+	double rate,interest,money,total;
+	cin>>money>>time>>rate;
+	
+	interest=0;total=money;
+	for(int i=1;i<=time;i++)
+	{
+		interest+=total*rate;
+		
+		total+=total*rate+money;
+		//cout<<interest<<" "<<money<<endl;
+	}
+    cout<<fixed<<setprecision(2)<<interest<<endl;
+	//interest=double((int)(interest*100)/100.0);
+	//cout<<interest<<endl;
+
+	return 0;
+}

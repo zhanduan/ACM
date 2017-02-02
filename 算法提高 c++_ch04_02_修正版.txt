@@ -1,0 +1,60 @@
+#include<iostream>
+#include<fstream>
+#include<string>
+#include<vector>
+using namespace std;
+//算法提高 c++_ch04_02_修正版
+int hour, minute, second; 
+// 时间增量
+int incr_hr, incr_min, incr_sec;
+int print()
+{
+	if(second>=60)
+	{
+		minute+=second/60;
+		second=second%60;
+	}
+	if(second<0)
+	{
+		minute+=(second/60-1);
+		second=60+second%60;
+	}
+	if(minute>=60)
+	{
+		hour+=minute/60;
+		minute=minute%60;
+	}
+	if(minute<0)
+	{
+		hour+=(minute/60-1);
+		minute=60+minute%60;
+	}
+	if(hour>=24)
+	{
+		hour=hour%24;
+	}
+    if(hour<0)
+	{
+		hour=24+hour%24;
+	}
+
+	if(hour<10)cout<<"0"<<hour<<":";
+	else cout<<hour<<":";
+	if(minute<10)cout<<"0"<<minute<<":";
+	else cout<<minute<<":";
+	if(second<10)cout<<"0"<<second<<endl;
+	else cout<<second<<endl;
+	return 0;
+}
+int main()
+{	
+	cin>>hour>>minute>>second>>incr_hr>>incr_min>>incr_sec;
+	print();
+	hour+=incr_hr;
+	minute+=incr_min;
+	second+=incr_sec;
+	
+	print();
+	cout<<"00:00:00"<<endl;
+	return 0;
+}

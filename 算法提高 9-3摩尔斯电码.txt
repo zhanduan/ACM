@@ -1,0 +1,56 @@
+#include<iostream>
+#include<fstream>
+#include<string>
+#include<vector>
+using namespace std;
+//算法提高 9-3摩尔斯电码
+int main()
+{	
+	string s,s1;
+	vector<string>ss;
+	int n,start;
+	string c[26]={"*-","-***","-*-*","-**","*","**-*","--*","****","**","*---","-*-","*-**","--","-*","---","*--*","--*-","*-*","***","-","**-","***-","*--","-**-","-*--","--**"};
+	//char b[]={'a','b','c','d','e','f','g','h','i',''}
+
+	while(cin>>s)
+	{
+		n=0;start=0;
+		ss.clear();
+		for(int i=0;i!=s.size();i++)
+		{
+			if(s[i]!='|')n++;
+			else
+			{
+				s1=s.substr(start,n);
+				start=i+1;
+				ss.push_back(s1);
+				n=0;
+			}
+			if(i==s.size()-1)
+			{
+				s1=s.substr(start);
+				ss.push_back(s1);
+			}
+		}
+		int j;
+		for (int i=0;i!=ss.size();i++)
+		{
+			//cout<<ss[i];
+			j=0;
+			while(1)
+			{
+				if(j==26)break;
+				if(ss[i]==c[j])
+				{
+				
+					cout<<char(97+j);
+					break;
+				}
+				j++;
+			}
+		}	
+
+	}
+
+	return 0;
+}
