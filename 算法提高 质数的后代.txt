@@ -1,0 +1,47 @@
+#include<iostream>
+#include<fstream>
+#include<string>
+#include<vector>
+using namespace std;
+#define N 100001
+int main()
+{	
+	bool used[N];
+	int i;
+	//memset(used,true,sizeof(used));
+	for( i=0;i<=N;i++)
+	{
+		used[i]=true;
+	}
+	used[0]=false;
+	used[1]=false;
+	for(i=2;i<=N;i++)
+	{
+		if(used[i])
+		{
+			for(int j=2*i;j<=N;j+=i)
+				used[j]=false;
+		}
+	}
+	int n,num;
+	bool k;
+	cin>>n;
+	while(n--)
+	{
+		cin>>num;
+		k=false;
+		for(i=2;i<num;i++)
+		{
+			if(used[i]&&(num%i==0)&&used[num/i])
+			{
+				k=true;
+			}
+		}
+		if(k)cout<<"Yes"<<endl;
+		else cout<<"No"<<endl;
+
+	}
+
+
+	return 0;
+}

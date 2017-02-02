@@ -1,0 +1,14 @@
+#include<iostream>
+using namespace std;
+
+int main()
+{
+	int num,day,hour,minute;
+	cin>>num;
+	minute=num%60;
+	hour=(num/60)%24;
+	day=(num/60)/24;
+	cout<<day<<" "<<hour<<" "<<minute<<" "<<endl;
+
+    return 0;
+}

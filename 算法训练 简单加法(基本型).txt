@@ -1,0 +1,52 @@
+#include<iostream>
+#include<string>
+#include <math.h>
+using namespace std;
+
+int main()
+{
+	string a;
+	string b;
+	cin>>a;
+	int i,n,mm,j,k,sum=0,num=0;
+	n=a.length();
+	for(i=0;i<n;i++)
+		num+=(int(a[i])-48)*pow(10,n-i-1);
+	//cout<<num<<endl;
+	for(i=0;i<num;i++)
+	{
+		if(i<10)
+		{	//cout<<b<<" "<<b.length()<<" mm="<<mm<<" ";
+			if(i==0||i==1||i==2)sum++;
+		}
+		else if(i<100)
+		{
+			mm=i%10;
+			//cout<<b<<" "<<b.length()<<" mm="<<mm<<" ";
+			if(mm==0||mm==1||mm==2)
+			{
+				if((i/10)*3<10)sum++;
+			}
+		}
+		else if(i<1000)
+		{
+			mm=i%100%10;
+			//cout<<b<<" "<<b.length()<<" mm="<<mm<<" ";
+			if(mm==0||mm==1||mm==2)
+			{
+				if(((i%100/10)*3<10)&&((i/100)*3<10))sum++;
+			}
+		}
+		else if(i<10000)
+		{
+			mm=i%1000%100%10;
+			//cout<<b<<" "<<b.length()<<" mm="<<mm<<" ";
+			if(mm==0||mm==1||mm==2)
+			{
+				if(((i%1000/100)*3<10)&&((i/1000)*3<10)&&((i%1000%100/10)*3<10))sum++;
+			}
+		}
+	}
+	cout<<sum<<endl;
+    return 0;
+}
