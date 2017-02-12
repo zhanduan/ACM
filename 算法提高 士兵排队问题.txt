@@ -1,0 +1,82 @@
+#include<iostream>
+#include<fstream>
+#include<string>
+#include<cstring> 
+#include<vector>
+#include<deque>
+using namespace std;
+#define N 100001
+deque<char>q;
+deque<char>::iterator search(char a)
+{
+//查找队列某一元素的位置并返回
+	deque<char>::iterator j,id;
+	for(j=q.begin();j!=q.end();j++)
+	{
+		if((*j)==a)id=j;
+	}
+	cout<<*id;
+		return id;
+}
+int main()
+{	
+	ifstream cin("in.txt");
+	ofstream cout("out.txt");
+	q.clear();
+	string s;
+	bool judge[1000],answer=true;
+//judge判断该元素是否已经被放入队列中，answer判断是否有解
+	memset(judge,false,1000);
+	int number1,number2;
+//number表示字符的ASCII码值，也当作这个字符的序号。
+	deque<char>::iterator id1,id2,i;
+//id表示这个元素在队列中的位置
+	while(!cin.eof())
+	{
+		getline(cin, s);
+		number1=s[0];
+		number2=s[2];
+		if(!judge[number1])
+		{
+			if(!judge[number2])
+			{
+				q.push_back(s[0]);
+				q.push_back(s[2]);
+				judge[number1]=true;
+				judge[number2]=true;
+			}
+			else
+			{
+				id2=search(s[2]);
+				//cout<<*id2<<" ";
+				q.insert(id2,1,s[0]);
+				judge[number1]=true;
+				judge[number2]=true;
+			}
+		}
+		else
+		{
+			if(!judge[number2])
+			{
+				id1=search(s[0]);
+				q.insert(id1+1,1,s[2]);
+			    judge[number1]=true;
+				judge[number2]=true;
+			}
+			else
+			{
+				if(search(s[0])>search(s[2]))answer=false;
+			}
+
+		}
+	}
+	if(answer)
+	{
+		for(i = q.begin();i!=q.end();i++)
+		cout<<*i<<" ";
+	}
+	else cout<<"No Answer!";
+	cin.close();
+	cout.close();
+	return 0;
+}

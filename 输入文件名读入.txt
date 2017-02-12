@@ -1,0 +1,29 @@
+#include<iostream>
+#include<fstream>
+#include<string>
+#include<cstring> 
+#include<vector>
+#include<deque>
+using namespace std;
+
+int main()
+{	
+	char f1[20],f2[20];
+	cin>>f1;
+	cin>>f2;
+	strcat(f1,".txt");
+	strcat(f2,".txt");
+	ifstream cin(f1);
+	ofstream cout(f2);
+
+	string s;
+
+	while(!cin.eof())
+	{
+		getline(cin, s);
+	}
+		 cout<<"No Answer!";
+	cin.close();
+	cout.close();
+	return 0;
+}

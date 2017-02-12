@@ -1,0 +1,29 @@
+#include <iostream>
+#include<vector>
+#include<set>
+using namespace std; 
+int main()
+{
+	//使用multiset集合
+	int n,number,nn,sum=0;
+	cin>>n;
+	multiset<int>s;
+	multiset<int>::iterator id1,id2;
+	while(n--)
+	{
+		cin>>number;
+		s.insert(number);
+	}
+	while(s.size()!=1)
+	{
+		id1=s.begin();	
+		id2=++s.begin();
+		sum+=*id1+*id2;
+		nn=*id1+*id2;
+		s.erase(s.begin());
+		s.erase(s.begin());
+		s.insert(nn);
+	}
+	cout<<sum;
+	return 0;
+}
