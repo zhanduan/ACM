@@ -1,0 +1,24 @@
+#include<iostream>
+#include<fstream>
+#include<string>
+#include<vector>
+#include<iomanip>
+#include<cstring>
+#include<cmath>
+using namespace std;
+#define N 101
+#define M 4000
+int main()
+{
+	int i,j,k;
+	//ofstream cout("out.txt");
+	for(i=3;i<500;i++)
+		for(j=i+1;j<500;j++)
+			for(k=j+1;k<=1000-i-j;k++)
+			{
+				if(i+j<=k)break;
+				//if(i+j+k>1000)break;
+				if((i*i+j*j)==(k*k))cout<<i<<" "<<j<<" "<<k<<endl;
+			}
+	return 0;
+}

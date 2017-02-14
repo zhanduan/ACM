@@ -1,0 +1,55 @@
+#include<iostream>
+#include<fstream>
+#include<cstring>
+#include<string>
+using namespace std;
+#define N 1001
+struct student
+{
+	char name[20];
+	char id[20];
+	char sex;
+};
+
+int main()
+{
+	//ifstream cin("input1.txt");
+//	ofstream cout("out.txt");
+	int num1,num2,i,j,n1,n2;
+	cin>>num1;
+	student s[N];
+	char a[20],b[20];    
+	string id,name,str1,str2;
+	for(i=0;i<num1;i++)
+	{
+		cin>>s[i].name;
+		cin>>s[i].id;
+		cin>>s[i].sex;
+	}   
+	cin>>num2;
+	for(j=0;j<num2;j++)
+	{
+		cin>>a>>b;
+		str1=a;str2=b;
+		for(i=0;i<num1;i++)
+		{	
+			id=s[i].id;
+			name=s[i].name;
+			if(str1==id)n1=i;
+			else if(str1==name)n1=i;
+		    else if(str2==id)n2=i;
+			else if(str2==name)n2=i;
+		}
+		if(j!=num2-1)
+		{
+		if(s[n1].sex==s[n2].sex)cout<<"N"<<endl;
+		else cout<<"Y"<<endl;
+		}
+		else {	
+			if(s[n1].sex==s[n2].sex)cout<<"N";
+		    else cout<<"Y";
+		}
+	}
+
+	return 0;
+}

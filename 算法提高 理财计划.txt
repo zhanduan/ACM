@@ -19,7 +19,7 @@ int main()
 		total+=total*rate+money;
 		//cout<<interest<<" "<<money<<endl;
 	}
-    cout<<fixed<<setprecision(2)<<interest<<endl;
+    cout<<fixed<<setprecision(2)<<interest<<endl;//保留两位小数
 	//interest=double((int)(interest*100)/100.0);
 	//cout<<interest<<endl;
 

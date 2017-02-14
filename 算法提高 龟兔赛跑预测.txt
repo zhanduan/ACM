@@ -1,0 +1,42 @@
+#include<iostream>
+#include<fstream>
+#include<string>
+#include<vector>
+#include<iomanip>
+#include<cstring>
+#include<cmath>
+using namespace std;
+#define N 101
+#define M 4000
+int main()
+{
+	int vr,i,vw,waitt,waits,l,sr=0,sw=0,t=0;
+	cin>>vr>>vw>>waits>>waitt>>l;
+	while(sr<l&&sw<l)
+	{
+		if((sr-sw)<waits)
+		{
+			sr+=vr;
+		    sw+=vw;
+		    t++;
+		//	cout<<"sr="<<sr<<"sw="<<sw<<"t="<<t<<endl;
+		}
+		else
+		{
+			//sw+=vw*waitt;
+		//	t+=waitt;
+			for(i=0;i<waitt;i++)
+			{
+				sw+=vw;
+				t++;
+				if(sw>=l)break;
+			}
+		//	cout<<"sr="<<sr<<"sw="<<sw<<"t="<<t<<endl;
+		}
+	}
+	if(sr>sw)cout<<"R"<<endl;
+	else if(sr<sw)cout<<"T"<<endl;
+	else cout<<"D"<<endl;
+	cout<<t;
+	return 0;
+}

@@ -1,0 +1,54 @@
+#include<iostream>
+#include<fstream>
+#include<string>
+#include<vector>
+using namespace std;
+char a[101][101];
+int dilei(int i,int j,int n,int m)
+{
+	int sum=0,k1,k2;
+	for(k1=i-1;k1<=i+1;k1++)
+		for(k2=j-1;k2<=j+1;k2++)
+		{
+			
+			if(k1>=0&&k1<n&&k2>=0&&k2<m)
+			{
+				if(!(k1==i&&k2==j))
+				{if(a[k1][k2]=='*')sum++;}
+			}
+		}
+	return sum;
+}
+int main()
+{
+	//ifstream cin("in.txt");
+	//ofstream cout("out.txt");
+	int n,m,i,j,k=0;
+	//char a[101][101];
+	while(1)
+	{
+		cin>>n>>m;
+		if(k)cout<<endl;
+		k++;
+		if(n==0&&m==0)break;
+		cout<<"Field #"<<k<<":"<<endl;
+		for(i=0;i<n;i++)
+		{
+			for(j=0;j<m;j++)
+			cin>>a[i][j];
+		//	getchar();
+		}
+		
+		for(i=0;i<n;i++)
+		{
+			for(j=0;j<m;j++)
+			{
+			if(a[i][j]=='*')cout<<'*';
+			else cout<<dilei(i,j,n,m);
+			}
+			cout<<endl;
+		}
+		
+	}
+	return 0;
+}

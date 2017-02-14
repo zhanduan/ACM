@@ -1,0 +1,49 @@
+#include<iostream>
+#include<fstream>
+#include<string>
+#include<vector>
+#include<iomanip>
+#include<cstring>
+#include<cmath>
+using namespace std;
+#define N 101
+#define M 4000
+int main()
+{
+	int i,j,k,an,am,bn,bm;
+	int a[N][M],b[N][M],c[N][M];
+	cin>>an>>am;
+	for(i=0;i<an;i++)
+		for(j=0;j<am;j++)
+			cin>>a[i][j];
+	cin>>bn>>bm;
+	for(i=0;i<bn;i++)
+		for(j=0;j<bm;j++)
+			cin>>b[i][j];
+	for(k=0;k<bm;k++)
+	{
+		for(i=0;i<an;i++)
+		c[i][k]=0;
+	}
+	
+	for(k=0;k<bm;k++)
+	{
+		for(i=0;i<an;i++)
+		{
+			for(j=0;j<am;j++)
+			{
+				c[i][k]+=a[i][j]*b[j][k];
+			}
+		}
+	}
+	for(i=0;i<an;i++)
+	{
+		for(k=0;k<bm;k++)
+		{
+			cout<<c[i][k]<<" ";
+		}
+		cout<<endl;
+	}
+	
+	return 0;
+}

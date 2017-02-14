@@ -1,0 +1,19 @@
+#include<iostream>
+#include<fstream>
+#include<string>
+#include<vector>
+#include<iomanip>
+#include<cstring>
+#include<cmath>
+using namespace std;
+#define N 100001
+
+int main()
+{	
+	double n,interest;
+	cin>>n;
+	interest=pow(1.1,n);
+	cout<<fixed<<setprecision(2)<<interest<<endl;
+
+	return 0;
+}

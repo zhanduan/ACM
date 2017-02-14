@@ -1,0 +1,71 @@
+#include<iostream>
+#include<fstream>
+#include<string>
+#include<vector>
+using namespace std;
+
+int main()
+{
+	//ifstream cin("input7.txt");
+	//ofstream cout("out.txt");
+	int n,i,a[101];
+	cin>>n;
+	for(i=n;i>=0;i--)
+		cin>>a[i];
+	for(i=n;i>=0;i--)
+	{
+
+	    if(i==1)//一次方
+		{
+			if(a[i]>0)
+			{
+			if(a[i]!=1)cout<<"+"<<a[i]<<"x";
+			else cout<<"+x";
+			}
+		    else if(a[i]<0)
+			{
+			if(a[i]!=-1)cout<<a[i]<<"x";
+			else cout<<"-x";
+			}
+		}
+		else if(i==0)//常数项
+		{
+			if(a[i]>0)
+			{
+				cout<<"+"<<a[i];
+			}
+			else if(a[i]<0)
+			{
+				cout<<a[i];
+			}
+		}
+		else if(i==n)//第n次方
+		{
+			if(a[i]>0)
+			{
+			if(a[i]!=1)cout<<a[i]<<"x^"<<i;
+			else cout<<"x^"<<i;
+			}
+		    else if(a[i]<0)
+			{
+			if(a[i]!=-1)cout<<a[i]<<"x^"<<i;
+			else cout<<"-x^"<<i;
+			}
+		}
+		else//其余项
+		{
+			if(a[i]>0)
+			{
+			if(a[i]!=1)cout<<"+"<<a[i]<<"x^"<<i;
+			else cout<<"+x^"<<i;
+			}
+			else if(a[i]<0)
+			{
+			if(a[i]!=-1)cout<<a[i]<<"x^"<<i;
+			else cout<<"-x^"<<i;
+			}
+		}
+	}
+
+	return 0;
+}

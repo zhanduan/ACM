@@ -1,0 +1,55 @@
+#include<iostream>
+#include<fstream>
+#include<string>
+#include<vector>
+using namespace std;
+#define N 200001
+//bool used[32769];
+vector<int>v1;
+//基础练习 分解质因素
+int main()
+{	
+	int i,min,max,num;
+	bool used[N];
+	//memset(used,true,sizeof(used));
+	for( i=0;i<N;i++)
+	{
+		used[i]=true;
+	}
+	used[0]=false;
+	used[1]=false;
+	for(i=2;i<N;i++)
+	{
+		if(used[i])
+		{
+			for(int j=2*i;j<N;j+=i)
+				used[j]=false;
+		}
+	}
+	cin>>num;
+			v1.clear();
+			if(used[num])cout<<num<<endl;
+			else{
+			for( i=2;i<=num;i++)
+			{
+				if(used[i])
+				{			
+					while(num%i==0)
+					{
+						num=num/i;	
+						v1.push_back(i);
+						if(num%i!=0)break;
+					}
+				}
+			}
+			
+			//cout<<num<<"=";
+			for( i=0;i<v1.size()-1;i++)
+				cout<<v1[i]<<"*";
+			//i=v1.size()-1;
+			cout<<v1[v1.size()-1]<<endl;
+			//cout<<v1.size()<<endl;
+			}
+	
+	return 0;
+}

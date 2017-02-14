@@ -1,0 +1,57 @@
+#include<iostream>
+#include<fstream>
+#include<cstring>
+#include<string>
+using namespace std;
+#define N 100000
+int main()
+{
+	bool used[N];
+	int i;
+	memset(used,true,sizeof(used));
+	for( i=0;i<N;i++)
+	{
+		used[i]=true;
+	}
+	used[0]=false;
+	used[1]=false;
+	for( i=2;i<N;i++)
+	{
+		if(used[i])
+		{
+			for(int j=2*i;j<N;j+=i)
+				used[j]=false;
+		}
+	}
+	string s;
+	int num[200],a,max,min;
+	memset(num,0,sizeof(num));
+	cin>>s;
+//	cout<<int(s[0]);
+	for(i=0;i<s.size();i++)
+	{
+		a=s[i];
+		num[a]++;
+	}
+	int id1='a',id2='z';
+	for(i=id1;i<=id2;i++)
+	{
+		if(num[i]!=0)
+		{
+			max=num[i];min=num[i];
+		}
+	}
+	for(i=id1;i<=id2;i++)
+	{
+		if(num[i]!=0)
+		{
+		if(num[i]>max)max=num[i];
+		else if(num[i]<min)min=num[i];
+		}
+	}
+	//cout<<"max="<<max<<"min="<<min<<endl;
+	if(used[max-min])cout<<"Lucky Word"<<endl<<(max-min);
+	else cout<<"No Answer"<<endl<<"0";
+
+	return 0;
+}
