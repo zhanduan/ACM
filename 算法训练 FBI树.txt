@@ -1,0 +1,46 @@
+//算法训练 FBI树
+#include<iostream>
+#include<fstream>
+#include<string>
+#include<cstring> 
+#include<vector>
+#include<deque>
+#include<cmath>
+using namespace std;
+//历届试题 幸运数
+//#define N 100000
+const int N=10000;
+char a[N];
+void digui(int n1,int n2)
+{
+	if(n1==n2)//叶子节点
+	{
+		if(a[n1]=='1')cout<<"I";
+		else cout<<"B";
+	}
+	else//根节点
+	{
+		int mid=(n2-n1-1)/2;
+		digui(n1,n1+mid);
+		digui(n2-mid,n2);
+		int sum=0;
+		for(int i=n1;i<=n2;i++)
+		{
+			if(a[i]=='0')sum++;
+		}
+		if(sum==0)cout<<"I";
+		else if(sum==(n2-n1+1))cout<<"B";
+		else cout<<"F";
+	}
+
+}
+int main()
+{	
+	int i,n,num;
+	cin>>n;
+	num=pow(2,n);
+	for(i=0;i<num;i++)
+		cin>>a[i];
+	digui(0,num-1);
+	return 0;
+}
