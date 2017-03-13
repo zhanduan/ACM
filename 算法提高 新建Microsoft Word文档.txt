@@ -1,0 +1,49 @@
+//算法提高 新建Microsoft Word文档
+#include<iostream>
+#include<cstring>
+#include<cstdio>//----------??
+using namespace std;
+#define N 2013
+bool a[N];
+int Minid(int n)
+{
+	int i;
+	for(i=0;i<n;i++)
+	{
+		if(!a[i])
+		{
+			break;
+		}
+	}
+	return i;
+}
+int main()
+{
+	int n;
+	memset(a,false,N);	
+	cin>>n;
+	for(int i=0;i<n;i++)
+	{
+		string s;
+		cin>>s;
+		if(s.length()==3)
+		{
+			int minid=Minid(n);
+			cout<<(minid+1)<<endl;
+			a[minid]=true;
+		}
+		else 
+		{
+			int id;
+			cin>>id;
+			id--;
+			if(a[id])
+			{
+				a[id]=false;
+				cout<<"Successful"<<endl;
+			}
+			else cout<<"Failed"<<endl;
+		}
+	}
+	return 0;
+}

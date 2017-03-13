@@ -1,0 +1,27 @@
+//Ëã·¨ÑµÁ· ´É×©ÆÌ·Å
+#include<iostream>
+#include<fstream>
+#include<string>
+#include<cstring> 
+#include<vector>
+#include<deque>
+#include<algorithm>
+#include<cmath>
+using namespace std;
+//#define N 100000
+const int N=10000;
+int digui(int n)
+{
+	if(n==0)return 0;
+	else if(n==1)return 1;
+	else if(n==2)return 2;
+	else return digui(n-1)+digui(n-2);
+}
+int main()
+{
+	int n,ans;
+	cin>>n;
+	ans=digui(n);
+	cout<<ans;
+return 0;
+}
